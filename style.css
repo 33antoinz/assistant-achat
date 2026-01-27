@@ -1,83 +1,106 @@
 :root {
-    --bg-dark: #050505;
-    --sidebar: #0f0f0f;
-    --accent: #d4af37;
-    --text: #e0e0e0;
-    --border: #222;
+    --gold: #d4af37;
+    --gold-dark: #aa8c2c;
+    --bg: #050505;
+    --card: rgba(255, 255, 255, 0.03);
+    --text: #ffffff;
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
-    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    overflow: hidden;
+    line-height: 1.6;
 }
 
-.app-container { display: flex; height: 100vh; }
-
-.sidebar {
-    width: 250px;
-    background: var(--sidebar);
-    border-right: 1px solid var(--border);
+.top-nav {
     display: flex;
-    flex-direction: column;
-    padding: 2rem;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.logo { font-weight: 600; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 3rem; color: var(--accent); }
+.brand { font-weight: 600; letter-spacing: 4px; font-size: 0.9rem; }
 
-.menu-item { margin: 1rem 0; font-size: 0.9rem; cursor: pointer; color: #666; transition: 0.3s; }
-.menu-item.active, .menu-item:hover { color: white; }
-
-.console { flex: 1; display: flex; flex-direction: column; padding: 3rem; overflow-y: auto; }
-
-.chat-window {
-    background: #0a0a0a;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+.hero-membership {
+    text-align: center;
+    padding: 6rem 10%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
 }
 
-.messages-container { flex: 1; padding: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; overflow-y: auto; }
-
-.msg.system { color: var(--accent); border-left: 2px solid var(--accent); padding-left: 1rem; margin-bottom: 1rem; }
-.msg.user { color: #fff; margin-bottom: 1rem; text-align: right; }
-
-.input-area { display: flex; border-top: 1px solid var(--border); padding: 1rem; }
-
-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: white;
-    padding: 0.5rem;
-    font-size: 1rem;
-    outline: none;
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
-button {
-    background: var(--accent);
-    color: black;
-    border: none;
-    padding: 0.7rem 1.5rem;
+.price-tag {
+    font-size: 3rem;
     font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: var(--gold);
+}
+
+.price-tag span { font-size: 1rem; color: #666; }
+
+.btn-gold {
+    background: var(--gold);
+    color: black;
+    padding: 1.2rem 3rem;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 0.7rem;
+    transition: 0.4s;
+    border-radius: 2px;
 }
 
-.result-card {
-    margin-top: 2rem;
-    background: #111;
-    border: 1px solid var(--accent);
+.btn-gold:hover { background: var(--gold-dark); transform: translateY(-3px); }
+
+.curriculum { padding: 5rem 10%; }
+
+.module-list { margin-top: 3rem; }
+
+.module-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.05);
     padding: 2rem;
-    animation: fadeIn 0.5s ease-out;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
 }
 
-.hidden { display: none; }
+.module-card.locked { opacity: 0.7; filter: grayscale(1); cursor: not-allowed; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.module-info { display: flex; align-items: flex-start; gap: 2rem; }
+
+.module-no {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    font-style: italic;
+}
+
+h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 400; }
+
+.lock-icon { font-size: 1.5rem; opacity: 0.5; }
+
+.status-dot {
+    height: 8px;
+    width: 8px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.pulse { animation: pulse-animation 2s infinite; }
+
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0px rgba(0, 255, 0, 0.4); }
+    100% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+}
