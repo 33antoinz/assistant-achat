@@ -1,88 +1,96 @@
 :root {
-    --bg: #f9f7f2; /* Blanc cassé / Papier */
-    --dark: #1a1a1a;
-    --accent: #2c4a3e; /* Vert forêt profond (évoque la santé/frais) */
-    --text: #333;
+    --black: #000000;
+    --white: #ffffff;
+    --grey: #f4f4f4;
+    --text-dim: #666;
+    --border: rgba(0,0,0,0.08);
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
+    background-color: var(--white);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    display: flex;
 }
 
-/* Header & Hero */
-.main-header { padding: 2rem 5%; }
-
-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8rem; }
-
-.brand { font-family: 'Bodoni Moda', serif; font-weight: 400; letter-spacing: 2px; }
-
-.cta-join {
-    background: var(--dark);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    font-size: 0.7rem;
-    font-weight: 600;
-    cursor: pointer;
+/* Navigation Latérale Épurée */
+.sidebar {
+    width: 80px;
+    height: 100vh;
+    border-right: 1px solid var(--border);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 100;
 }
 
-.hero { max-width: 900px; margin: 0 auto; text-align: center; }
+.brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; }
 
-.pre-title { font-size: 0.7rem; letter-spacing: 4px; color: var(--accent); font-weight: 600; }
+.nav-links { transform: rotate(-90deg); white-space: nowrap; }
+.nav-links a { 
+    text-decoration: none; color: var(--black); font-size: 0.7rem; 
+    letter-spacing: 2px; text-transform: uppercase; margin: 0 20px;
+}
 
-h1 {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(2rem, 5vw, 4rem);
+/* Contenu Principal */
+.content { margin-left: 80px; width: 100%; }
+
+.hero { padding: 10vw 10%; max-width: 1200px; }
+
+.line { width: 40px; height: 1px; background: var(--black); margin-bottom: 2rem; }
+
+.category { font-size: 0.7rem; letter-spacing: 3px; font-weight: 600; color: var(--text-dim); }
+
+h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 8vw, 6rem); 
+    line-height: 0.9; 
+    margin-top: 1rem;
     font-weight: 400;
-    line-height: 1.1;
-    margin: 1.5rem 0;
 }
 
-h1 em { font-style: italic; color: #777; }
+h1 span { font-style: italic; color: var(--text-dim); }
 
-.hero-desc { font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #555; }
-
-/* Curriculum Grid */
-.curriculum-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
-    padding: 8rem 10%;
-    background: white;
+.abstract { 
+    font-size: 1.2rem; margin-top: 3rem; max-width: 450px; 
+    font-weight: 200; line-height: 1.8; color: var(--text-dim);
 }
 
-.chapter-no { font-family: 'Bodoni Moda', serif; font-style: italic; color: var(--accent); }
-
-.chapter h2 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin: 1rem 0; }
-
-.topics { list-style: none; padding: 0; margin-top: 1.5rem; font-size: 0.85rem; font-weight: 600; color: #888; }
-
-/* Pricing Section */
-.pricing-card { padding: 6rem 10%; background: var(--bg); }
-
-.inner-card {
-    background: var(--dark);
-    color: white;
-    padding: 4rem;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
+/* Grille de Modules Style "Archive" */
+.grid-modules { 
+    display: grid; grid-template-columns: 1fr 1fr; 
+    border-top: 1px solid var(--border);
 }
 
-.price { font-size: 3rem; font-family: 'Bodoni Moda', serif; margin: 2rem 0; }
-.price span { font-size: 1rem; opacity: 0.5; }
+.module-item { 
+    padding: 4rem 10%; border-right: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border);
+    transition: background 0.4s ease;
+}
 
-.btn-final {
-    background: white;
-    color: black;
-    padding: 1.5rem 3rem;
-    border: none;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
+.module-item:hover { background: var(--grey); }
+
+.module-head { display: flex; justify-content: space-between; margin-bottom: 2rem; font-size: 0.7rem; letter-spacing: 1px; }
+
+.num { font-weight: 600; }
+
+h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; }
+
+/* Pricing */
+.pricing-premium { padding: 10vw 10%; display: flex; justify-content: center; }
+
+.price-box { text-align: center; max-width: 400px; }
+
+.amount { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 1.5rem 0; }
+.amount span { font-size: 1rem; font-family: 'Inter'; color: var(--text-dim); }
+
+.btn-black { 
+    background: var(--black); color: var(--white); border: none; 
+    padding: 1.5rem 3rem; width: 100%; cursor: pointer;
+    font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
 }
