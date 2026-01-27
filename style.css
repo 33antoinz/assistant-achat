@@ -1,9 +1,8 @@
 :root {
-    --gold: #d4af37;
-    --gold-dark: #aa8c2c;
-    --bg: #050505;
-    --card: rgba(255, 255, 255, 0.03);
-    --text: #ffffff;
+    --bg: #f9f7f2; /* Blanc cassé / Papier */
+    --dark: #1a1a1a;
+    --accent: #2c4a3e; /* Vert forêt profond (évoque la santé/frais) */
+    --text: #333;
 }
 
 body {
@@ -11,96 +10,79 @@ body {
     color: var(--text);
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem 5%;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+/* Header & Hero */
+.main-header { padding: 2rem 5%; }
+
+nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8rem; }
+
+.brand { font-family: 'Bodoni Moda', serif; font-weight: 400; letter-spacing: 2px; }
+
+.cta-join {
+    background: var(--dark);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.brand { font-weight: 600; letter-spacing: 4px; font-size: 0.9rem; }
+.hero { max-width: 900px; margin: 0 auto; text-align: center; }
 
-.hero-membership {
-    text-align: center;
-    padding: 6rem 10%;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
-}
+.pre-title { font-size: 0.7rem; letter-spacing: 4px; color: var(--accent); font-weight: 600; }
 
 h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 1.5rem 0;
 }
 
-.price-tag {
-    font-size: 3rem;
-    font-weight: 600;
-    margin: 2rem 0 1rem;
-    color: var(--gold);
+h1 em { font-style: italic; color: #777; }
+
+.hero-desc { font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #555; }
+
+/* Curriculum Grid */
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    padding: 8rem 10%;
+    background: white;
 }
 
-.price-tag span { font-size: 1rem; color: #666; }
+.chapter-no { font-family: 'Bodoni Moda', serif; font-style: italic; color: var(--accent); }
 
-.btn-gold {
-    background: var(--gold);
+.chapter h2 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin: 1rem 0; }
+
+.topics { list-style: none; padding: 0; margin-top: 1.5rem; font-size: 0.85rem; font-weight: 600; color: #888; }
+
+/* Pricing Section */
+.pricing-card { padding: 6rem 10%; background: var(--bg); }
+
+.inner-card {
+    background: var(--dark);
+    color: white;
+    padding: 4rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.price { font-size: 3rem; font-family: 'Bodoni Moda', serif; margin: 2rem 0; }
+.price span { font-size: 1rem; opacity: 0.5; }
+
+.btn-final {
+    background: white;
     color: black;
-    padding: 1.2rem 3rem;
+    padding: 1.5rem 3rem;
     border: none;
     font-weight: 700;
-    font-size: 1rem;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.4s;
-    border-radius: 2px;
-}
-
-.btn-gold:hover { background: var(--gold-dark); transform: translateY(-3px); }
-
-.curriculum { padding: 5rem 10%; }
-
-.module-list { margin-top: 3rem; }
-
-.module-card {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 2rem;
     margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.3s;
-}
-
-.module-card.locked { opacity: 0.7; filter: grayscale(1); cursor: not-allowed; }
-
-.module-info { display: flex; align-items: flex-start; gap: 2rem; }
-
-.module-no {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    color: var(--gold);
-    font-style: italic;
-}
-
-h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 400; }
-
-.lock-icon { font-size: 1.5rem; opacity: 0.5; }
-
-.status-dot {
-    height: 8px;
-    width: 8px;
-    background-color: #00ff00;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.pulse { animation: pulse-animation 2s infinite; }
-
-@keyframes pulse-animation {
-    0% { box-shadow: 0 0 0 0px rgba(0, 255, 0, 0.4); }
-    100% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
 }
