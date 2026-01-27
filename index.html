@@ -3,50 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privilège Invisible | Assistant Stratégique</title>
+    <title>Privilège Invisible | Academy</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="app-container">
-        <aside class="sidebar">
-            <div class="logo">PRIVILÈGE INVISIBLE</div>
-            <nav class="menu">
-                <div class="menu-item active">Assistant</div>
-                <div class="menu-item">Protocoles Archivés</div>
-                <div class="menu-item">Légal & Droits</div>
-            </nav>
-            <div class="status-bar">Système Opérationnel</div>
-        </aside>
+    <nav class="top-nav">
+        <div class="brand">PRIVILÈGE INVISIBLE</div>
+        <div class="user-status">
+            <span class="status-dot pulse"></span> ACCÈS RESTREINT
+        </div>
+    </nav>
 
-        <main class="console">
-            <header class="console-header">
-                <h1>Assistant d'Arbitrage v1.0</h1>
-                <p>Entrez l'objet de votre convoitise. Je définirai la meilleure stratégie d'acquisition.</p>
-            </header>
+    <main class="membership-container">
+        <section class="hero-membership">
+            <div class="hero-text">
+                <h1>L'Ingénierie de l'Abondance.</h1>
+                <p>Ne cherchez plus les réductions. Apprenez à les créer. <br>Rejoignez 1 200 actifs qui ont repris le contrôle de leur pouvoir d'achat.</p>
+                <div class="price-tag">39,99€<span>/mois</span></div>
+                <button class="btn-gold">Obtenir mon accès immédiat</button>
+                <p class="subtext">Sans engagement. Annulation en un clic.</p>
+            </div>
+        </section>
 
-            <section id="chat-interface" class="chat-window">
-                <div id="messages" class="messages-container">
-                    <div class="msg system">En attente de paramètres...</div>
+        <section class="curriculum">
+            <h2>Le Curriculum Stratégique</h2>
+            
+            <div class="module-list">
+                <div class="module-card locked">
+                    <div class="module-info">
+                        <span class="module-no">01</span>
+                        <div class="module-text">
+                            <h3>Psychologie des Algorithmes Marchands</h3>
+                            <p>Comment les sites e-commerce vous profilent et comment inverser la tendance pour forcer des tarifs personnalisés.</p>
+                        </div>
+                    </div>
+                    <div class="lock-icon">🔒</div>
                 </div>
-                
-                <div class="input-area">
-                    <input type="text" id="user-query" placeholder="Ex: iPhone 15, Vol annulé, Sneakers Limited..." autocomplete="off">
-                    <button id="send-btn">Analyser</button>
-                </div>
-            </section>
 
-            <section id="strategy-result" class="result-card hidden">
-                <div class="result-header">
-                    <span class="badge">Protocole Généré</span>
-                    <button onclick="resetAssistant()">Nouvelle analyse</button>
+                <div class="module-card locked">
+                    <div class="module-info">
+                        <span class="module-no">02</span>
+                        <div class="module-text">
+                            <h3>Le Droit comme Levier de Luxe</h3>
+                            <p>Maîtriser les failles des conditions générales de vente pour obtenir des surclassements et remboursements tactiques.</p>
+                        </div>
+                    </div>
+                    <div class="lock-icon">🔒</div>
                 </div>
-                <div id="strategy-content"></div>
-            </section>
-        </main>
-    </div>
 
-    <script src="script.js"></script>
+                <div class="module-card locked">
+                    <div class="module-info">
+                        <span class="module-no">03</span>
+                        <div class="module-text">
+                            <h3>L'Arbitrage de Crédit & Cashback Avancé</h3>
+                            <p>Maximiser les flux financiers secondaires pour autofinancer vos achats plaisir à 100%.</p>
+                        </div>
+                    </div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 PRIVILÈGE INVISIBLE — DISCRÉTION ASSURÉE.
+    </footer>
+
 </body>
 </html>
