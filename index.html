@@ -3,56 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privilège Invisible — L'Académie de l'Arbitrage</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>FrigoSmart - Drive Collaboratif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 font-sans">
 
-    <nav class="sidebar">
-        <div class="brand">P.I.</div>
-        <div class="nav-links">
-            <a href="#">Le Manifeste</a>
-            <a href="#">Curriculum</a>
-            <a href="#">Tarifs</a>
+    <nav class="bg-green-600 p-4 text-white flex justify-between items-center shadow-lg">
+        <h1 class="text-2xl font-bold">FrigoSmart 🧊</h1>
+        <div class="flex items-center gap-4">
+            <span id="userPoints" class="bg-white text-green-600 px-3 py-1 rounded-full text-sm font-bold">⭐ 450 pts</span>
+            <button class="bg-green-800 px-4 py-2 rounded-lg">Mon Profil</button>
         </div>
-        <button class="cta-sidebar">S'inscrire</button>
     </nav>
 
-    <main class="content">
-        <section class="hero">
-            <div class="line"></div>
-            <span class="category">FORMATION CONTINUE</span>
-            <h1>L'ingénierie <br>du <span>quotidien.</span></h1>
-            <p class="abstract">Une méthode d'arbitrage domestique pour les actifs exigeants. Apprenez à optimiser vos flux de consommation sans altérer votre standing.</p>
-        </section>
-
-        <section class="grid-modules">
-            <div class="module-item">
-                <div class="module-head">
-                    <span class="num">01</span>
-                    <span class="duration">4 MODULES</span>
-                </div>
-                <h3>Sourcing Alimentaire de Haute Précision</h3>
-                <p>Déconstruire les marges des enseignes pour accéder aux produits nobles au prix du commodité.</p>
-            </div>
-
-            <div class="module-item">
-                <div class="module-head">
-                    <span class="num">02</span>
-                    <span class="duration">6 MODULES</span>
-                </div>
-                <h3>Optimisation des Flux Logistiques</h3>
-                <p>L'art de la gestion des stocks domestiques pour éliminer la taxe sur l'urgence.</p>
+    <main class="max-w-4xl mx-auto p-6">
+        <section class="bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">1. Analysez votre frigo</h2>
+            <div class="border-dashed border-4 border-gray-200 p-10 text-center rounded-lg hover:border-green-400 transition">
+                <input type="file" id="frigoUpload" accept="image/*" class="hidden">
+                <label for="frigoUpload" class="cursor-pointer">
+                    <p class="text-gray-500">Cliquez pour uploader ou prendre une photo du frigo</p>
+                    <span class="mt-2 inline-block bg-green-500 text-white px-6 py-2 rounded">Prendre la photo</span>
+                </label>
             </div>
         </section>
 
-        <section class="pricing-premium">
-            <div class="price-box">
-                <span class="label">ADHÉSION ANNUELLE</span>
-                <div class="amount">39,90€<span>/mois</span></div>
-                <p>Accès illimité à la base de connaissance et aux protocoles hebdomadaires.</p>
-                <button class="btn-black">Rejoindre l'Académie</button>
+        <section id="resultsSection" class="hidden bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-green-700">2. Produits manquants détectés (IA)</h2>
+            <ul id="shoppingList" class="divide-y divide-gray-100">
+                </ul>
+            <button id="confirmOrder" class="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">
+                Publier la demande de Drive
+            </button>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold mb-4">3. Commandes à proximité (Gagnez des points ⭐)</h2>
+            <div id="communityFeed" class="grid gap-4">
+                <div class="bg-white p-4 border-l-4 border-orange-500 shadow-sm rounded">
+                    <p class="font-bold">Thomas - Leclerc Drive</p>
+                    <p class="text-sm text-gray-600">6 articles • Récompense : 50 pts</p>
+                    <button class="mt-2 text-blue-600 text-sm font-medium">Accepter la mission</button>
+                </div>
             </div>
         </section>
     </main>
