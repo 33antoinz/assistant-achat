@@ -1,20 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = { threshold: 0.2 };
-
-    const reveal = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    }, observerOptions);
-
-    // Appliquer l'effet sur les sections
-    document.querySelectorAll('.module-item, .hero').forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "all 1s cubic-bezier(0.2, 0.8, 0.2, 1)";
-        reveal.observe(el);
-    });
+document.getElementById('frigoUpload').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        // Simulation de l'analyse IA
+        simulateAIAnalysis();
+    }
 });
+
+function simulateAIAnalysis() {
+    const resultsSection = document.getElementById('resultsSection');
+    const list = document.getElementById('shoppingList');
+    
+    // Simulation de données reçues par une API
+    const items = ['Lait Demi-écrémé', 'Oeufs x12', 'Beurre doux', 'Yaourts Nature'];
+    
+    list.innerHTML = '';
+    items.forEach(item => {
+        list.innerHTML += `
+            <li class="py-3 flex justify-between items-center">
+                <span>${item}</span>
+                <input type="checkbox" checked class="h-5 w-5 accent-green-500">
+            </li>
+        `;
+    });
+
+    resultsSection.classList.remove('hidden');
+    window.scrollTo({ top: resultsSection.offsetTop, behavior: 'smooth' });
+}
