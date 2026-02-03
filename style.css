@@ -1,96 +1,158 @@
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --grey: #f4f4f4;
-    --text-dim: #666;
-    --border: rgba(0,0,0,0.08);
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>FrigoSmart | Drive Collaboratif</title>
+    <style>
+        /* Style Minimaliste */
+        :root {
+            --primary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #f4f7f6;
+            --border: #ddd;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
 
-body {
-    background-color: var(--white);
-    color: var(--black);
-    font-family: 'Inter', sans-serif;
-    display: flex;
-}
+        header {
+            background: white;
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Navigation Latérale Épurée */
-.sidebar {
-    width: 80px;
-    height: 100vh;
-    border-right: 1px solid var(--border);
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 0;
-    z-index: 100;
-}
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-.brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
 
-.nav-links { transform: rotate(-90deg); white-space: nowrap; }
-.nav-links a { 
-    text-decoration: none; color: var(--black); font-size: 0.7rem; 
-    letter-spacing: 2px; text-transform: uppercase; margin: 0 20px;
-}
+        h2 { margin-top: 0; font-size: 1.2rem; }
 
-/* Contenu Principal */
-.content { margin-left: 80px; width: 100%; }
+        /* Zone Upload */
+        .upload-zone {
+            border: 2px dashed var(--border);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .upload-zone:hover { border-color: var(--primary); }
 
-.hero { padding: 10vw 10%; max-width: 1200px; }
+        /* Liste de courses */
+        .item-list { list-style: none; padding: 0; }
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
 
-.line { width: 40px; height: 1px; background: var(--black); margin-bottom: 2rem; }
+        /* Boutons */
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
 
-.category { font-size: 0.7rem; letter-spacing: 3px; font-weight: 600; color: var(--text-dim); }
+        .points-badge {
+            background: #e8faf0;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
 
-h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(3rem, 8vw, 6rem); 
-    line-height: 0.9; 
-    margin-top: 1rem;
-    font-weight: 400;
-}
+<header>
+    <strong>FrigoSmart</strong>
+    <span class="points-badge">⭐ 450 Points</span>
+</header>
 
-h1 span { font-style: italic; color: var(--text-dim); }
+<div class="container">
+    
+    <div class="card">
+        <h2>1. Analyser mon frigo</h2>
+        <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+            <input type="file" id="fileInput" hidden onchange="showPreview()">
+            <p>Cliquez pour ajouter une photo</p>
+        </div>
+    </div>
 
-.abstract { 
-    font-size: 1.2rem; margin-top: 3rem; max-width: 450px; 
-    font-weight: 200; line-height: 1.8; color: var(--text-dim);
-}
+    <div id="aiSection" class="card" style="display:none;">
+        <h2>2. Liste suggérée par l'IA</h2>
+        <div class="item-list" id="shoppingList">
+            </div>
+        <button class="btn" onclick="publishOrder()">Publier la demande de Drive</button>
+    </div>
 
-/* Grille de Modules Style "Archive" */
-.grid-modules { 
-    display: grid; grid-template-columns: 1fr 1fr; 
-    border-top: 1px solid var(--border);
-}
+    <div class="card">
+        <h2>3. Demandes à proximité</h2>
+        <div class="item-row">
+            <div>
+                <strong>Julie M.</strong> - Auchan Drive<br>
+                <small>3 articles • 2km</small>
+            </div>
+            <button class="btn btn-outline" style="width: auto;">Aider (+30 pts)</button>
+        </div>
+    </div>
 
-.module-item { 
-    padding: 4rem 10%; border-right: 1px solid var(--border); 
-    border-bottom: 1px solid var(--border);
-    transition: background 0.4s ease;
-}
+</div>
 
-.module-item:hover { background: var(--grey); }
+<script>
+    function showPreview() {
+        // Simulation du temps de traitement IA
+        const aiSection = document.getElementById('aiSection');
+        const list = document.getElementById('shoppingList');
+        const items = ['Lait (1L)', 'Beurre', 'Pommes x6'];
 
-.module-head { display: flex; justify-content: space-between; margin-bottom: 2rem; font-size: 0.7rem; letter-spacing: 1px; }
+        list.innerHTML = '';
+        items.forEach(item => {
+            list.innerHTML += `
+                <div class="item-row">
+                    <span>${item}</span>
+                    <input type="checkbox" checked>
+                </div>
+            `;
+        });
 
-.num { font-weight: 600; }
+        aiSection.style.display = 'block';
+    }
 
-h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; }
+    function publishOrder() {
+        alert("Votre demande a été publiée sur le réseau !");
+    }
+</script>
 
-/* Pricing */
-.pricing-premium { padding: 10vw 10%; display: flex; justify-content: center; }
-
-.price-box { text-align: center; max-width: 400px; }
-
-.amount { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 1.5rem 0; }
-.amount span { font-size: 1rem; font-family: 'Inter'; color: var(--text-dim); }
-
-.btn-black { 
-    background: var(--black); color: var(--white); border: none; 
-    padding: 1.5rem 3rem; width: 100%; cursor: pointer;
-    font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
-}
+</body>
+</html>
